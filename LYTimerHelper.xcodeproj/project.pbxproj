@@ -14,6 +14,8 @@
 		6A91FFCB20F5D8C800B5A1D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A91FFC920F5D8C800B5A1D4 /* LaunchScreen.storyboard */; };
 		6A91FFCE20F5D8C800B5A1D4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A91FFCD20F5D8C800B5A1D4 /* main.m */; };
 		6A91FFD820F5D8C800B5A1D4 /* LYTimerHelperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A91FFD720F5D8C800B5A1D4 /* LYTimerHelperTests.m */; };
+		6A91FFE520F7268B00B5A1D4 /* LYTimerEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A91FFE420F7268A00B5A1D4 /* LYTimerEvent.m */; };
+		6AC794EA2105AE3D00B0BB33 /* LYTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AC794E92105AE3D00B0BB33 /* LYTimer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,10 @@
 		6A91FFD320F5D8C800B5A1D4 /* LYTimerHelperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LYTimerHelperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A91FFD720F5D8C800B5A1D4 /* LYTimerHelperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LYTimerHelperTests.m; sourceTree = "<group>"; };
 		6A91FFD920F5D8C800B5A1D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6A91FFE320F7268A00B5A1D4 /* LYTimerEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LYTimerEvent.h; sourceTree = "<group>"; };
+		6A91FFE420F7268A00B5A1D4 /* LYTimerEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LYTimerEvent.m; sourceTree = "<group>"; };
+		6AC794E82105AE3D00B0BB33 /* LYTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LYTimer.h; sourceTree = "<group>"; };
+		6AC794E92105AE3D00B0BB33 /* LYTimer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LYTimer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +69,7 @@
 		6A91FFB220F5D8C700B5A1D4 = {
 			isa = PBXGroup;
 			children = (
+				6A91FFE220F7265D00B5A1D4 /* Source */,
 				6A91FFBD20F5D8C800B5A1D4 /* LYTimerHelper */,
 				6A91FFD620F5D8C800B5A1D4 /* LYTimerHelperTests */,
 				6A91FFBC20F5D8C800B5A1D4 /* Products */,
@@ -101,6 +108,17 @@
 				6A91FFD920F5D8C800B5A1D4 /* Info.plist */,
 			);
 			path = LYTimerHelperTests;
+			sourceTree = "<group>";
+		};
+		6A91FFE220F7265D00B5A1D4 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				6A91FFE320F7268A00B5A1D4 /* LYTimerEvent.h */,
+				6A91FFE420F7268A00B5A1D4 /* LYTimerEvent.m */,
+				6AC794E82105AE3D00B0BB33 /* LYTimer.h */,
+				6AC794E92105AE3D00B0BB33 /* LYTimer.m */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,7 +223,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AC794EA2105AE3D00B0BB33 /* LYTimer.m in Sources */,
 				6A91FFC320F5D8C800B5A1D4 /* ViewController.m in Sources */,
+				6A91FFE520F7268B00B5A1D4 /* LYTimerEvent.m in Sources */,
 				6A91FFCE20F5D8C800B5A1D4 /* main.m in Sources */,
 				6A91FFC020F5D8C800B5A1D4 /* AppDelegate.m in Sources */,
 			);
