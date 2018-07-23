@@ -198,7 +198,7 @@
 }
 
 + (NSString *)creatKey:(NSTimeInterval)interval {
-    return [NSString stringWithFormat:@"Timer_%ld", (NSInteger)(interval * 1000)];
+    return [NSString stringWithFormat:@"Timer_%ld", (long)(interval * 1000)];
 }
 
 @end
@@ -227,7 +227,7 @@
 }
 
 + (NSString *)creatKey:(NSTimeInterval)interval {
-    return [NSString stringWithFormat:@"DisplayLink_%ld", (NSInteger)(interval)];
+    return [NSString stringWithFormat:@"DisplayLink_%ld", (long)(interval)];
 }
 
 @end
