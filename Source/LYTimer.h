@@ -32,14 +32,34 @@
 
 /**
  添加key对应的定时操作
+ 
+ @param key 定时操作对应的key
+ @param repeatNum 循环次数 （PS: -1 -- 无限循环）
+ @param actionBlock fire时执行的代码块
+ */
+- (void)addTimerWith:(NSString *)key repeatNum:(NSInteger)repeatNum withActionBlock:(void (^)(LYTimerEvent *event))actionBlock;
+- (void)addTimerWith:(NSString *)key withActionBlock:(void (^)(LYTimerEvent *event))actionBlock;
+- (void)addTimerForOnceWith:(NSString *)key withActionBlock:(void (^)(LYTimerEvent *event))actionBlock;
 
+/**
+ 移除key对应的定时操作
+ 
+ @param key 当前间隔定时器中要移除的定时操作对应的key值
+ */
+- (void)removeTimerForKey:(NSString *)key;
+
+@end
+
+@interface LYTimer (Deprecated)
+/**
+ 添加key对应的定时操作
+ 
  @param block fire时执行的代码
  @param repeatNum 循环次数 （PS: -1 -- 无限循环）
  @param key 定时操作对应的key
  */
-- (void)addTimerForBlock:(void (^)(LYTimerEvent *event))block repeatNum:(NSInteger)repeatNum key:(NSString *)key;
-- (void)addTimerForBlock:(void (^)(LYTimerEvent *event))block key:(NSString *)key;
-- (void)addTimerOnceForBlock:(void (^)(LYTimerEvent *event))block key:(NSString *)key;
-- (void)removeTimerForKey:(NSString *)key;
+- (void)addTimerForBlock:(void (^)(LYTimerEvent *event))block repeatNum:(NSInteger)repeatNum key:(NSString *)key __deprecated_msg("使用 addTimerWith:repeatNum:withActionBlock:");
+- (void)addTimerForBlock:(void (^)(LYTimerEvent *event))block key:(NSString *)key __deprecated_msg("使用 addTimerWith:withActionBlock:");
+- (void)addTimerOnceForBlock:(void (^)(LYTimerEvent *event))block key:(NSString *)key __deprecated_msg("使用 addTimerForOnceWith:withActionBlock:");
 @end
 

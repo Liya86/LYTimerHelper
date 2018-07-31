@@ -148,22 +148,23 @@
     }
 }
 
-- (void)addTimerForBlock:(void (^)(LYTimerEvent *event))block repeatNum:(NSInteger)repeatNum key:(NSString *)key {
-    if (block && key && repeatNum != 0) {
+
+- (void)addTimerWith:(NSString *)key repeatNum:(NSInteger)repeatNum withActionBlock:(void (^)(LYTimerEvent *event))actionBlock {
+    if (actionBlock && key && repeatNum != 0) {
         @synchronized(self) {
-            LYTimerEvent *timerEvent = [[LYTimerEvent alloc] initWith:block repeatNum:repeatNum key:key];
+            LYTimerEvent *timerEvent = [[LYTimerEvent alloc] initWith:actionBlock repeatNum:repeatNum key:key];
             _eventMutableDic[key] = timerEvent;
             [self startTimer];
         }
     }
 }
 
-- (void)addTimerForBlock:(void (^)(LYTimerEvent *event))block key:(NSString *)key {
-    [self addTimerForBlock:block repeatNum:-1 key:key];
+- (void)addTimerWith:(NSString *)key withActionBlock:(void (^)(LYTimerEvent *event))actionBlock {
+    [self addTimerWith:key repeatNum:-1 withActionBlock:actionBlock];
 }
 
-- (void)addTimerOnceForBlock:(void (^)(LYTimerEvent *event))block key:(NSString *)key {
-    [self addTimerForBlock:block repeatNum:1 key:key];
+- (void)addTimerForOnceWith:(NSString *)key withActionBlock:(void (^)(LYTimerEvent *event))actionBlock {
+    [self addTimerWith:key repeatNum:1 withActionBlock:actionBlock];
 }
 
 - (void)removeTimerForKey:(NSString *)key {
@@ -179,7 +180,7 @@
 - (void)creatTimer {
     // 1. 创建 dispatch source，并指定检测事件为定时
     self.timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_main_queue());
-    // 2. 设置定时器启动时间，间隔，容差
+    // 2. 设置定时器启动时间，间隔，容差 -- 这里目前用的是mach_absolute_time，如果长时间用dispatch_walltime更合理（不受休眠影响）
     dispatch_source_set_timer(self.timer, DISPATCH_TIME_NOW, self.interval * NSEC_PER_SEC,  0 * NSEC_PER_SEC);
     // 3. 设置callback
     dispatch_source_set_event_handler(self.timer, ^{
@@ -230,4 +231,19 @@
     return [NSString stringWithFormat:@"DisplayLink_%ld", (long)(interval)];
 }
 
+@end
+
+@implementation LYTimer(Deprecated)
+#pragma mark - des
+- (void)addTimerForBlock:(void (^)(LYTimerEvent *event))block repeatNum:(NSInteger)repeatNum key:(NSString *)key {
+    [self addTimerWith:key repeatNum:repeatNum withActionBlock:block];
+}
+
+- (void)addTimerForBlock:(void (^)(LYTimerEvent *event))block key:(NSString *)key {
+    [self addTimerWith:key repeatNum:-1 withActionBlock:block];
+}
+
+- (void)addTimerOnceForBlock:(void (^)(LYTimerEvent *event))block key:(NSString *)key {
+    [self addTimerWith:key repeatNum:1 withActionBlock:block];
+}
 @end
