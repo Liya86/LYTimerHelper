@@ -36,7 +36,7 @@ Pod::Spec.new do |s|
                }
   s.author       = "Liya86"
   s.platform     = :ios, "8.0"
-  s.source       = { :git => "https://github.com/Liya86/LYTimerHelper.git", :tag => "1.0" }
+  s.source       = { :git => "https://github.com/Liya86/LYTimerHelper.git", :tag => "1.0.1" }
   s.source_files = "Source/**/*.{h,m}"
   s.frameworks   = "Foundation", "UIKit"
   s.requires_arc = true
